@@ -1,5 +1,6 @@
 # D - AtCoder Janken 3
 Link to problem: https://atcoder.jp/contests/abc365/tasks/abc365_d
+![Screenshot 2024-08-03 at 10 36 36 PM](https://github.com/user-attachments/assets/f1a63903-d792-4428-80c1-00f412d47cbc)
 
 # Solution
 
