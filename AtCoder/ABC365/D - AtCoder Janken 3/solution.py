@@ -8,10 +8,10 @@ for i in range(1, n + 1):
   curr = dp[i - 1]
   char = s[i - 1]
   if char == "R":
-    dp[i] = [max(curr[1], curr[2]), 0, max(curr[0], curr[1]) + 1]
+    dp[i] = [max(curr[1], curr[2]), float("-inf"), max(curr[0], curr[1]) + 1]
   elif char == "S":
-    dp[i] = [max(curr[1], curr[2]) + 1, max(curr[0], curr[2]), 0]
+    dp[i] = [max(curr[1], curr[2]) + 1, max(curr[0], curr[2]), float("-inf")]
   else:
-    dp[i] = [0,  max(curr[0], curr[2]) + 1, max(curr[0], curr[1])]
+    dp[i] = [float("-inf"),  max(curr[0], curr[2]) + 1, max(curr[0], curr[1])]
 
 print(max(dp[-1]))
