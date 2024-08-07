@@ -25,3 +25,23 @@ class Solution(object):
                 stack.append(interval)
         
         return [j - i + 1 for i,j in stack]
+  
+# Partition using greedy method
+class Solution(object):
+  def partitionLabels(self, s):
+      """
+      :type s: str
+      :rtype: List[int]
+      """
+      last = {c:i for i,c in enumerate(s)}
+
+      ans = []
+      anchor = 0
+      end = -1
+      for i in range(len(s)):
+          char = s[i]
+          end = max(end, last[char])
+          if i == end:
+              ans.append(i - anchor + 1)
+              anchor = i + 1
+      return ans
