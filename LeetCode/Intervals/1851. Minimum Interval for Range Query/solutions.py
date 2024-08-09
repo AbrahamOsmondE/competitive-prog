@@ -6,13 +6,11 @@ class Solution(object):
         :rtype: List[int]
         """
         intervals.sort(key=lambda i: (i[0], i[1]))
-        queries = [(val, index) for index,val in enumerate(queries)]
-        queries.sort(key=lambda i: i[0])
         pq = []
-        ans = []
+        res = {}
         curr = 0
 
-        for num, i in queries:
+        for num in sorted(queries):
             while pq and pq[0][2] < num:
                 heapq.heappop(pq)
 
@@ -30,21 +28,12 @@ class Solution(object):
             while pq:
                 length, currX, currY = pq[0]
                 if currX <= num and num <= currY:
-                    ans.append(length)
+                    res[num] = length
                     break
 
             if not pq:
-                ans.append(-1)
-        
-        while len(ans) < len(queries):
-            ans.append(-1)
-        
-        res = [0 for _ in range(len(queries))]
+                res[num] = -1
 
-        for i in range(len(queries)):
-            actualIndex = queries[i][1]
-            res[actualIndex] = ans[i]
-
-        return res
+        return [ res[i] for i in queries ]
 
 
